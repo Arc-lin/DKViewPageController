@@ -66,11 +66,20 @@
  */
 - (void)setupTitlesView
 {
-    // 标签栏整体
-    UIView *titlesView = [[UIView alloc] init];
+    // 设置默认属性
     if (!self.titleViewBgColor) {
         self.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
     }
+    if (!self.highlightColor) {
+        self.highlightColor = [UIColor redColor];
+    }
+    if (!self.normalColor){
+        self.normalColor = [UIColor grayColor];
+    }
+    
+    // 标签栏整体
+    UIView *titlesView = [[UIView alloc] init];
+    
     titlesView.backgroundColor = self.titleViewBgColor;
     titlesView.width = self.view.width;
     titlesView.height = 35;
@@ -80,9 +89,7 @@
     
     // 底部的红色指示器
     UIView *indicatorView = [[UIView alloc] init];
-    if (!self.highlightColor) {
-        self.highlightColor = [UIColor redColor];
-    }
+   
     indicatorView.backgroundColor = self.highlightColor;
     indicatorView.height = 2;
     indicatorView.tag = -1;
@@ -101,7 +108,7 @@
         button.x = i * button.width;
         button.tag = i;
         [button setTitle:titles[i] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [button setTitleColor:self.normalColor forState:UIControlStateNormal];
         [button setTitleColor:self.highlightColor forState:UIControlStateDisabled];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];

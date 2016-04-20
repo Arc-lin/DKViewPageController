@@ -26,7 +26,8 @@
     ViewController2 *vc3 = [[ViewController2 alloc] init];
     DKViewPagerController *vc = [[DKViewPagerController alloc] initWithPageTitles:@[@"视图1",@"视图2",@"视图3"] controllers:@[vc1,vc2,vc3]];
     vc.highlightColor = [UIColor redColor];
-    vc.titleViewBgColor = [UIColor blueColor];
+    vc.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+    vc.normalColor = [UIColor grayColor];
     window.rootViewController = vc;
     
     self.window = window;
