@@ -43,7 +43,7 @@
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     ViewController1 *vc1 = [[ViewController1 alloc] init];
     ViewController2 *vc2 = [[ViewController2 alloc] init];
-    ViewController2 *vc3 = [[ViewController2 alloc] init];
+    ViewController2 *vc3 = [[ViewController3 alloc] init];
     DKViewPagerController *vc = [[DKViewPagerController alloc] initWithPageTitles:@[@"视图1",@"视图2",@"视图3"] controllers:@[vc1,vc2,vc3]];
     vc.highlightColor = [UIColor redColor];
     vc.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
