@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "DKViewPagerController.h"
+#import "ViewController1.h"
+#import "ViewController2.h"
 
 @interface AppDelegate ()
 
@@ -19,8 +21,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    DKViewPagerController *vc = [[DKViewPagerController alloc] init];
-
+    ViewController1 *vc1 = [[ViewController1 alloc] init];
+    ViewController2 *vc2 = [[ViewController2 alloc] init];
+    ViewController2 *vc3 = [[ViewController2 alloc] init];
+    DKViewPagerController *vc = [[DKViewPagerController alloc] initWithPageTitles:@[@"视图1",@"视图2",@"视图3"] controllers:@[vc1,vc2,vc3]];
+    vc.highlightColor = [UIColor redColor];
+    vc.titleViewBgColor = [UIColor blueColor];
     window.rootViewController = vc;
     
     self.window = window;

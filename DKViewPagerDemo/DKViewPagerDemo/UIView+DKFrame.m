@@ -1,12 +1,12 @@
 //
-//  UIView+Frame.m
+//  UIView+DKFrame.m
 //  ArcBlog
 //
 //  Created by Arclin on 15/11/18.
 //  Copyright © 2015年 sziit. All rights reserved.
 //
 
-#import "UIView+Frame.h"
+#import "UIView+DKFrame.h"
 
 @implementation UIView (Frame)
 

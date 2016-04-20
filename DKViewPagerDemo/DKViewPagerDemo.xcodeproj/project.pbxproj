@@ -12,7 +12,7 @@
 		350B2E6F1CC4CCF000476EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350B2E6E1CC4CCF000476EB1 /* Assets.xcassets */; };
 		350B2E721CC4CCF000476EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350B2E701CC4CCF000476EB1 /* LaunchScreen.storyboard */; };
 		350B2E7C1CC4CDD200476EB1 /* DKViewPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 350B2E7B1CC4CDD200476EB1 /* DKViewPagerController.m */; };
-		351517501CC705A0004B7CAA /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3515174F1CC705A0004B7CAA /* UIView+Frame.m */; };
+		351517501CC705A0004B7CAA /* UIView+DKFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3515174F1CC705A0004B7CAA /* UIView+DKFrame.m */; };
 		35720D4F1CC76E9E00F417AB /* ViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 35720D4D1CC76E9E00F417AB /* ViewController1.m */; };
 		35720D501CC76E9E00F417AB /* ViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35720D4E1CC76E9E00F417AB /* ViewController1.xib */; };
 		35720D541CC76EAC00F417AB /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 35720D521CC76EAC00F417AB /* ViewController2.m */; };
@@ -29,8 +29,8 @@
 		350B2E731CC4CCF000476EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		350B2E7A1CC4CDD200476EB1 /* DKViewPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKViewPagerController.h; sourceTree = "<group>"; };
 		350B2E7B1CC4CDD200476EB1 /* DKViewPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKViewPagerController.m; sourceTree = "<group>"; };
-		3515174E1CC705A0004B7CAA /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		3515174F1CC705A0004B7CAA /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		3515174E1CC705A0004B7CAA /* UIView+DKFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+DKFrame.h"; path = "../UIView+DKFrame.h"; sourceTree = "<group>"; };
+		3515174F1CC705A0004B7CAA /* UIView+DKFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+DKFrame.m"; path = "../UIView+DKFrame.m"; sourceTree = "<group>"; };
 		35720D4C1CC76E9E00F417AB /* ViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController1.h; sourceTree = "<group>"; };
 		35720D4D1CC76E9E00F417AB /* ViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController1.m; sourceTree = "<group>"; };
 		35720D4E1CC76E9E00F417AB /* ViewController1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController1.xib; sourceTree = "<group>"; };
@@ -78,8 +78,6 @@
 				35720D511CC76EAC00F417AB /* ViewController2.h */,
 				35720D521CC76EAC00F417AB /* ViewController2.m */,
 				35720D531CC76EAC00F417AB /* ViewController2.xib */,
-				3515174E1CC705A0004B7CAA /* UIView+Frame.h */,
-				3515174F1CC705A0004B7CAA /* UIView+Frame.m */,
 				350B2E6E1CC4CCF000476EB1 /* Assets.xcassets */,
 				350B2E701CC4CCF000476EB1 /* LaunchScreen.storyboard */,
 				350B2E731CC4CCF000476EB1 /* Info.plist */,
@@ -101,6 +99,8 @@
 			children = (
 				350B2E7A1CC4CDD200476EB1 /* DKViewPagerController.h */,
 				350B2E7B1CC4CDD200476EB1 /* DKViewPagerController.m */,
+				3515174E1CC705A0004B7CAA /* UIView+DKFrame.h */,
+				3515174F1CC705A0004B7CAA /* UIView+DKFrame.m */,
 			);
 			path = DKViewPager;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35720D4F1CC76E9E00F417AB /* ViewController1.m in Sources */,
-				351517501CC705A0004B7CAA /* UIView+Frame.m in Sources */,
+				351517501CC705A0004B7CAA /* UIView+DKFrame.m in Sources */,
 				350B2E671CC4CCF000476EB1 /* AppDelegate.m in Sources */,
 				350B2E7C1CC4CDD200476EB1 /* DKViewPagerController.m in Sources */,
 				350B2E641CC4CCF000476EB1 /* main.m in Sources */,

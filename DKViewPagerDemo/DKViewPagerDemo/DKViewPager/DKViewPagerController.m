@@ -7,9 +7,7 @@
 //
 
 #import "DKViewPagerController.h"
-#import "ViewController1.h"
-#import "ViewController2.h"
-#import "UIView+Frame.h"
+#import "UIView+DKFrame.h"
 
 #define ALRGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
@@ -40,6 +38,14 @@
 
 @implementation DKViewPagerController
 
+- (instancetype)initWithPageTitles:(NSArray *)pageTitles controllers:(NSArray *)pageControllers
+{
+    self.pageTitles = pageTitles;
+    self.pageControllers = pageControllers;
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -62,7 +68,10 @@
 {
     // 标签栏整体
     UIView *titlesView = [[UIView alloc] init];
-    titlesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+    if (!self.titleViewBgColor) {
+        self.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
+    }
+    titlesView.backgroundColor = self.titleViewBgColor;
     titlesView.width = self.view.width;
     titlesView.height = 35;
     titlesView.y = 20;
@@ -71,14 +80,18 @@
     
     // 底部的红色指示器
     UIView *indicatorView = [[UIView alloc] init];
-    indicatorView.backgroundColor = [UIColor redColor];
+    if (!self.highlightColor) {
+        self.highlightColor = [UIColor redColor];
+    }
+    indicatorView.backgroundColor = self.highlightColor;
     indicatorView.height = 2;
     indicatorView.tag = -1;
     indicatorView.y = titlesView.height - indicatorView.height;
     self.indicatorView = indicatorView;
     
     // 内部的子标签
-    NSArray *titles = @[@"全部",@"段子"];
+    NSArray *titles = self.pageTitles;
+    
     CGFloat width = titlesView.width / titles.count;
     CGFloat height = titlesView.height;
     for (NSInteger i = 0; i < titles.count; i++) {
@@ -89,7 +102,7 @@
         button.tag = i;
         [button setTitle:titles[i] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor redColor] forState:UIControlStateDisabled];
+        [button setTitleColor:self.highlightColor forState:UIControlStateDisabled];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
         [button addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
         [titlesView addSubview:button];
@@ -102,7 +115,8 @@
             
             // 让按钮内部的label根据文字内容来计算尺寸
             //            [button.titleLabel sizeToFit];
-            self.indicatorView.width = [titles[i] sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}].width;
+//            self.indicatorView.width = [titles[i] sizeWithAttributes:@{NSFontAttributeName:button.titleLabel.font}].width;
+            self.indicatorView.width = button.width;
             self.indicatorView.centerX = button.centerX;
         }
     }
@@ -118,7 +132,8 @@
     
     // 动画
     [UIView animateWithDuration:0.25 animations:^{
-        self.indicatorView.width = button.titleLabel.width;
+//        self.indicatorView.width = button.titleLabel.width;
+        self.indicatorView.width = button.width;
         self.indicatorView.centerX  = button.centerX;
     }];
     
@@ -132,8 +147,10 @@
  */
 - (void)setupChildVcs
 {
-    [self addChildViewController:[[ViewController1 alloc] init]];
-    [self addChildViewController:[[ViewController2 alloc] init]];
+    for (int i = 0; i < _pageControllers.count; i++) {
+        UIViewController *vc = _pageControllers[i];
+        [self addChildViewController:vc];
+    }
 }
 
 /**
@@ -166,11 +183,11 @@
     // 取出子控制器
     UITableViewController *vc = self.childViewControllers[index];
     vc.view.x = scrollView.contentOffset.x;
-    vc.view.y = 0; // 设置控制器的View的y值为0 （默认是20）
-    vc.view.height = scrollView.height;//设置控制器view的height的值为整个屏幕的高度（默认比屏幕高度少20px）
+    vc.view.y = 20; // 设置控制器的View的y值为0 （默认是20）
+    vc.view.height = scrollView.height - 20;//设置控制器view的height的值为整个屏幕的高度（默认比屏幕高度少20px）
     // 设置内边距
     CGFloat bottom = self.tabBarController.tabBar.height;
-    CGFloat top = CGRectGetMaxY(self.titlesView.frame);
+    CGFloat top = CGRectGetMaxY(self.titlesView.frame) - 20;
     vc.tableView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
     // 设置滚动条的内边距
     vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset;
