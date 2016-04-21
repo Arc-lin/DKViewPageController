@@ -9,10 +9,6 @@
 #import "DKViewPagerController.h"
 #import "UIView+DKFrame.h"
 
-#define ALRGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-
-#define ALGlobalBg ALRGBColor(223, 223, 223)
-
 @interface DKViewPagerController ()<UIScrollViewDelegate>
 /**
  *  当前选中的按钮
@@ -49,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = ALGlobalBg;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     // 初始化子控制器
     [self setupChildVcs];
@@ -83,7 +79,11 @@
     titlesView.backgroundColor = self.titleViewBgColor;
     titlesView.width = self.view.width;
     titlesView.height = 35;
-    titlesView.y = 20;
+    
+    // 设置默认
+    self.contentViewY = self.contentViewY ? self.contentViewY : 20;
+    
+    titlesView.y = self.contentViewY;
     [self.view addSubview:titlesView];
     self.titlesView = titlesView;
     
@@ -169,7 +169,14 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIScrollView *contentView = [[UIScrollView alloc] init];
-    contentView.frame = self.view.bounds;
+    contentView.bounces = NO;
+    contentView.showsHorizontalScrollIndicator = NO;
+//    contentView.frame = self.view.bounds;
+    
+    // 默认高度为屏幕高度
+    self.contentViewHeight = self.contentViewHeight ? self.contentViewHeight : self.view.height;
+    
+    contentView.frame = CGRectMake(0, self.titlesView.y, [UIScreen mainScreen].bounds.size.width, self.contentViewHeight);
     contentView.delegate = self;
     contentView.pagingEnabled = YES;
     [self.view insertSubview:contentView atIndex:0]; // 图层位置调整
@@ -192,12 +199,12 @@
     vc.view.x = scrollView.contentOffset.x;
     vc.view.y = 20; // 设置控制器的View的y值为0 （默认是20）
     vc.view.height = scrollView.height - 20;//设置控制器view的height的值为整个屏幕的高度（默认比屏幕高度少20px）
-    // 设置内边距
+//     设置内边距
     CGFloat bottom = self.tabBarController.tabBar.height;
-    CGFloat top = CGRectGetMaxY(self.titlesView.frame) - 20;
-    vc.tableView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);
-    // 设置滚动条的内边距
+    vc.tableView.contentInset = UIEdgeInsetsMake(10, 0, bottom, 0);
+//     设置滚动条的内边距
     vc.tableView.scrollIndicatorInsets = vc.tableView.contentInset;
+    
     [scrollView addSubview:vc.view];
 }
 

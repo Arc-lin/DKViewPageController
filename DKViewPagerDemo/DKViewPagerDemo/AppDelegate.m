@@ -24,10 +24,15 @@
     ViewController1 *vc1 = [[ViewController1 alloc] init];
     ViewController2 *vc2 = [[ViewController2 alloc] init];
     ViewController2 *vc3 = [[ViewController2 alloc] init];
-    DKViewPagerController *vc = [[DKViewPagerController alloc] initWithPageTitles:@[@"视图1",@"视图2",@"视图3"] controllers:@[vc1,vc2,vc3]];
+    ViewController2 *vc4 = [[ViewController2 alloc] init];
+    ViewController2 *vc5 = [[ViewController2 alloc] init];
+    ViewController2 *vc6 = [[ViewController2 alloc] init];
+    DKViewPagerController *vc = [[DKViewPagerController alloc] initWithPageTitles:@[@"视图1",@"视图2",@"视图3",@"视图4",@"视图5",@"视图6    "] controllers:@[vc1,vc2,vc3,vc4,vc5,vc6]];
     vc.highlightColor = [UIColor redColor];
     vc.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
     vc.normalColor = [UIColor grayColor];
+    vc.contentViewY = 200;
+    vc.contentViewHeight = 200;
     window.rootViewController = vc;
     
     self.window = window;

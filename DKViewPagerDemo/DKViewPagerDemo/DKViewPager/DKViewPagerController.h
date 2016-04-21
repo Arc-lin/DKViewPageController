@@ -35,6 +35,17 @@
  */
 @property (nonatomic,strong) UIColor *titleViewBgColor;
 
+/**
+ * 主内容视图高度
+ */
+@property (nonatomic,assign) CGFloat contentViewHeight;
+
+/**
+ * 视图y轴的值
+ */
+@property (nonatomic,assign) CGFloat contentViewY;
+
+
 - (instancetype)initWithPageTitles:(NSArray *)pageTitles controllers:(NSArray *)pageControllers;
 
 @end

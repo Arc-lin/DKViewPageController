@@ -1,4 +1,4 @@
-#DKViewPage
+#DKViewPageController
 ****
 
 ###模仿安卓的ViewPageFragment
@@ -30,8 +30,12 @@
 - highlightColor 标签高亮颜色 
 - normalColor 标签默认颜色
 - titleViewBgColor 标签栏背景颜色
+- contentViewY y方向的值
+- contentViewHeight 视图高度
 
 ```
+    vc.contentViewY = 200;
+    vc.contentViewHeight = 200;
 	vc.highlightColor = [UIColor redColor];
     vc.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
     vc.normalColor = [UIColor grayColor];
@@ -45,6 +49,8 @@
     ViewController2 *vc2 = [[ViewController2 alloc] init];
     ViewController2 *vc3 = [[ViewController3 alloc] init];
     DKViewPagerController *vc = [[DKViewPagerController alloc] initWithPageTitles:@[@"视图1",@"视图2",@"视图3"] controllers:@[vc1,vc2,vc3]];
+    vc.contentViewY = 200;
+    vc.contentViewHeight = 200;
     vc.highlightColor = [UIColor redColor];
     vc.titleViewBgColor = [[UIColor whiteColor] colorWithAlphaComponent:0.7];
     vc.normalColor = [UIColor grayColor];
