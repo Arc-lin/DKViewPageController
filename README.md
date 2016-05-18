@@ -1,4 +1,9 @@
 #DKViewPageController
+
+
+####还没做完。。研究中。。。
+
+
 ****
 
 ###模仿安卓的ViewPageFragment
